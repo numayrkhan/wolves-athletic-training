@@ -1,0 +1,68 @@
+/* in client/src/pages/AdminFormsPage.css */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #0a2c33;
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+}
+
+.modal-body {
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.modal-body hr {
+  border: none;
+  border-top: 1px solid #333;
+  margin: 15px 0;
+}
+
+.form-data-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px 20px;
+}
+
+.form-data-key {
+  font-weight: bold;
+  color: #ccc;
+  text-transform: capitalize;
+}
+
+.form-data-value {
+  color: white;
+}
+
+.close-modal-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #555;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+}

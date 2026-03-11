@@ -1,0 +1,162 @@
+/* in client/src/components/Header.css */
+
+/* --- Main Header Container --- */
+/* This is the full-width bar at the top. We make it a transparent flex container. */
+header {
+  /* NOTE: 'position', 'top', 'left', 'width', and 'z-index' have been moved to .header-container */
+  padding: 1rem; 
+  font-family: "Nunito Sans", sans-serif;
+  /* IMPORTANT: Give the header a background so it's no longer transparent */
+  background-color: rgba(5, 22, 26, 0.95);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-container {
+  position: sticky; /* This makes the entire block (nav + banner) stick to the top */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Use a high z-index to stay on top of other page content */
+}
+
+#logo {
+  max-width: 100%;
+  height: 40px; /* Give the logo a fixed height */
+  margin-left: 10px;
+  border-radius: 50%; /* Make the logo circular */
+  border: 2px solid rgba(255, 255, 255, 0.5); /* Optional: add a subtle border */
+}
+
+/* --- The Glassmorphism Nav Pill --- */
+/* This is the most important part. The <nav> element becomes the visual center. */
+nav {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem; /* Space inside the pill */
+
+  /* The Glass Effect */
+  background: rgba(30, 30, 30, 0.35); /* Dark, semi-transparent background */
+  backdrop-filter: blur(10px); /* This creates the frosted glass blur! */
+  -webkit-backdrop-filter: blur(10px); /* For Safari compatibility */
+
+  /* The Shape and Lift */
+  border-radius: 50px; /* Creates the pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border to catch light */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Lifts the nav off the page */
+}
+
+/* --- Navigation Links --- */
+nav a {
+  color: #f0f0f0; /* A slightly softer white */
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight on hover */
+  color: #ffffff;
+}
+
+/* --- The "Contact Us" Button --- */
+/* This styles the button to be the main call-to-action */
+#navJoin {
+  padding: 10px 20px;
+  border-radius: 50px; /* Match the pill shape */
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: var(--secondary-color); /* Use your theme's accent color */
+  color: var(--primary-color);
+  transition: transform 0.2s ease;
+}
+
+#navJoin:hover {
+  transform: scale(1.05); /* Slight "pop" effect on hover */
+  cursor: pointer;
+}
+
+.demo-banner {
+  background-color: #f39f5a; /* A noticeable but on-brand color */
+  color: #05161a; /* Dark text for good contrast */
+  text-align: center;
+  padding: 10px 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  width: 100%;
+  z-index: 1000; /* Keeps it on top of other content */
+}
+
+/* --- Mobile Menu Styles (Unchanged but included for completeness) --- */
+.hamburger-menu {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white; /* Make hamburger visible against hero images */
+  cursor: pointer;
+  z-index: 11;
+  margin-right: 20px;
+  text-shadow: 0 0 5px black; /* Add a shadow to ensure it's always visible */
+}
+
+.mobile-nav {
+  position: fixed;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(
+    5,
+    22,
+    26,
+    0.9
+  ); /* Darker, semi-transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s ease-in-out;
+}
+
+.mobile-nav.open {
+  left: 0;
+}
+
+.mobile-nav a {
+  font-size: 2rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  margin: 20px 0;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.close-menu-btn {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 3rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* Media Query to Control Visibility */
+@media (max-width: 768px) {
+  header nav,
+  .desktop-header-button {
+    display: none; /* Hide desktop nav and button */
+  }
+  .hamburger-menu {
+    display: block; /* Show hamburger menu */
+  }
+}

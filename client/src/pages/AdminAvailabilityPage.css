@@ -1,0 +1,155 @@
+/* in client/src/pages/AdminAvailabilityPage.css */
+
+.availability-container h2 {
+  margin-bottom: 20px;
+}
+
+.availability-controls {
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #0a2c33;
+  border-radius: 10px;
+}
+
+.availability-controls label {
+  font-weight: bold;
+  margin-right: 15px;
+}
+
+.availability-controls select {
+  padding: 10px;
+  min-width: 250px;
+  background-color: #05161a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.availability-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+@media (max-width: 900px) {
+  .availability-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.calendar-wrapper {
+  background: #0a2c33;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* FullCalendar dark theme overrides */
+.calendar-wrapper .fc {
+  color: white;
+}
+.calendar-wrapper .fc .fc-button {
+  background: var(--secondary-color) !important;
+  border: none !important;
+  opacity: 0.9;
+}
+.calendar-wrapper .fc .fc-button:hover {
+  opacity: 1;
+}
+.calendar-wrapper .fc-toolbar-title {
+  color: white;
+}
+.calendar-wrapper .fc-day-header,
+.calendar-wrapper .fc-col-header-cell-cushion {
+  color: #ccc;
+}
+.calendar-wrapper .fc-daygrid-day-number {
+  color: white;
+  text-decoration: none;
+}
+.calendar-wrapper .fc-day-today {
+  background: rgba(243, 159, 90, 0.2) !important;
+}
+
+.times-panel {
+  background: #0a2c33;
+  padding: 20px;
+  border-radius: 10px;
+  min-height: 400px;
+}
+
+.times-panel h3 {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.existing-availability {
+  margin-bottom: 30px;
+}
+
+.existing-availability h4,
+.add-availability-form h4 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.existing-availability ul {
+  list-style: none;
+  padding: 0;
+}
+
+.existing-availability li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0e3f49;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.existing-availability li button {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.add-availability-form .time-inputs {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.add-availability-form .time-inputs > div {
+  flex: 1;
+}
+
+.add-availability-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.add-availability-form select {
+  width: 100%;
+  padding: 10px;
+  background-color: #05161a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  color: white;
+}
+
+.add-availability-form .add-new-button {
+  width: 100%;
+  padding: 12px;
+}
+
+/* A more forceful rule to remove the day cell hover effect */
+.calendar-wrapper .fc-daygrid-day:hover {
+  background: none !important;
+}

@@ -1,0 +1,115 @@
+/* in client/src/pages/AdminPricingPage.css */
+
+.admin-pricing-container h2 {
+  margin-bottom: 10px;
+}
+
+.admin-pricing-container > p {
+  margin-bottom: 30px;
+  color: #ccc;
+}
+
+.pricing-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 700px;
+}
+
+.pricing-tier-row {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr; /* Label, Input, Actions */
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  background: #0a2c33;
+  border-radius: 8px;
+}
+
+
+.tier-label {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.tier-input {
+  display: flex;
+  align-items: center;
+  background: #05161a;
+  border: 1px solid #555;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+
+.tier-input span {
+  color: #888;
+}
+/* in client/src/pages/AdminPricingPage.css */
+
+/* Add this new rule to specifically target and move the slash */
+.tier-slash {
+  position: relative;
+  
+  margin: 0 8px; /* Adds a little space on either side of the slash */
+}
+.tier-input input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 5px;
+  text-align: center;
+}
+
+.tier-input input::-webkit-outer-spin-button,
+.tier-input input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.save-button {
+  padding: 10px 15px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.save-button:hover {
+  transform: scale(1.05);
+}
+
+.form-success-message {
+  color: #2ecc71;
+  background-color: rgba(46, 204, 113, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* New container for the buttons */
+.tier-actions {
+  display: flex;
+  gap: 10px;
+}
+
+/* New style for the delete button */
+.delete-button {
+  padding: 10px;
+  background-color: #555;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+  font-size: 1.2rem;
+}
+
+.delete-button:hover {
+  background-color: #e74c3c; /* Red on hover */
+}

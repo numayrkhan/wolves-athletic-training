@@ -1,0 +1,167 @@
+/* in client/src/Forms.css */
+
+.form-container {
+  /* A subtle gradient makes the background feel less flat */
+  background: linear-gradient(145deg, #0e262b, #0a2c33);
+  
+  /* Increased border-radius for a softer look */
+  border-radius: 16px; 
+  padding: 30px 40px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(243, 159, 90, 0.1);
+
+  /* A soft shadow to lift the form off the page */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(4px); /* Optional: adds a nice frosted glass effect if you have a background image */
+  
+  text-align: left;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(243, 159, 90, 0.2);
+}
+
+.form-header h2 {
+  color: var(--secondary-color);
+  font-weight: 600; /* Bolder for the new font */
+  margin-bottom: 5px;
+}
+
+.form-question, .form-group {
+  margin-bottom: 25px;
+}
+
+.form-question label {
+  display: block;
+  font-weight: 500; /* Adjusted for Poppins */
+  margin-bottom: 10px;
+  color: #e0e0e0;
+}
+
+.radio-options {
+  display: flex;
+  gap: 20px;
+}
+
+.radio-options label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 400; /* Regular weight */
+}
+
+/* Custom styled radio buttons */
+.radio-options input[type="radio"] {
+  display: none;
+}
+
+.radio-custom {
+  height: 20px;
+  width: 20px;
+  background-color: #05161a;
+  border: 2px solid var(--secondary-color);
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+  position: relative;
+  transition: background-color 0.2s;
+}
+
+.radio-options label:hover .radio-custom {
+  background-color: #1a4a55;
+}
+
+.radio-options input[type="radio"]:checked + .radio-custom::after {
+  content: '';
+  height: 10px;
+  width: 10px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #555;
+  background-color: var(--primary-color);
+  color: white;
+  font-family: 'Poppins', sans-serif; /* Ensure form inputs use the new font */
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(243, 159, 90, 0.25);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-group.inline {
+  display: flex;
+  gap: 20px;
+}
+
+.form-group.inline > div {
+  flex: 1;
+}
+
+.waiver-text {
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  border: 1px solid #555;
+  font-size: 0.9rem;
+}
+
+.waiver-text p {
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #f7b17a;
+  transform: translateY(-2px);
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .form-container {
+    padding: 20px;
+  }
+  .form-group.inline {
+    flex-direction: column;
+    gap: 0;
+  }
+  .form-group.inline > div {
+    margin-bottom: 25px; /* Add margin back for stacked elements */
+  }
+}

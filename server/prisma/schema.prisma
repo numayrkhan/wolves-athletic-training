@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// --- ENUMS ---
+enum FormType {
+  PARQ
+  WAIVER
+}
+
+enum FormStatus {
+  PENDING
+  COMPLETED
+  NEEDS_REVIEW
+}
+
+// For tracking the status of a service area request.
+enum RequestStatus {
+  RECEIVED
+  CONTACTED
+  SERVICED
+}
+
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  role      String   // admin, coach, customer
+  password  String?
+  passwordResetToken   String?   @unique 
+  passwordResetExpires DateTime? 
+  googleId  String?  @unique
+  createdAt DateTime @default(now())
+  orders    Order[]
+  coach     Coach?
+  forms     LegalForm[]
+}
+
+model Coach {
+  id             Int             @id @default(autoincrement())
+  bio            String?
+  user           User            @relation(fields: [userId], references: [id])
+  userId         Int             @unique
+  isActive       Boolean         @default(true)
+  availability   Availability[]
+  bookedSessions BookedSession[]
+}
+
+model Service {
+  id          Int     @id @default(autoincrement())
+  name        String
+  description String
+  price       Float
+  duration    Int
+  orders      Order[]
+}
+
+model Availability {
+  id        Int      @id @default(autoincrement())
+  startTime DateTime
+  endTime   DateTime
+  coach     Coach    @relation(fields: [coachId], references: [id])
+  coachId   Int
+}
+
+model Order {
+  id          Int             @id @default(autoincrement())
+  orderTime   DateTime        @default(now())
+  status      String
+  totalAmount Float
+  user        User            @relation(fields: [userId], references: [id])
+  userId      Int
+  service     Service         @relation(fields: [serviceId], references: [id])
+  serviceId   Int
+  payment     Payment?
+  sessions    BookedSession[]
+}
+
+model BookedSession {
+  id        Int      @id @default(autoincrement())
+  startTime DateTime
+  endTime   DateTime
+  location  String
+  order     Order    @relation(fields: [orderId], references: [id])
+  orderId   Int
+  coach     Coach    @relation(fields: [coachId], references: [id])
+  coachId   Int
+}
+
+model Payment {
+  id                    Int      @id @default(autoincrement())
+  amount                Float
+  status                String
+  stripePaymentIntentId String?
+  createdAt             DateTime @default(now())
+  order                 Order    @relation(fields: [orderId], references: [id])
+  orderId               Int      @unique
+
+  @@index([stripePaymentIntentId])
+}
+
+model LegalForm {
+  id          Int        @id @default(autoincrement())
+  user        User       @relation(fields: [userId], references: [id])
+  userId      Int
+  type        FormType
+  status      FormStatus
+  submittedAt DateTime   @default(now())
+  formData    Json
+  @@unique([userId, type])
+}
+
+model ServiceArea {
+  zipCode String @id @unique
+  county  String
+  state   String
+}
+
+model PricingTier {
+  sessionCount    Int   @id @unique
+  pricePerSession Float
+}
+
+model ServiceAreaRequest {
+  id        Int      @id @default(autoincrement())
+  zipCode   String
+  name      String?
+  email     String
+  status    RequestStatus @default(RECEIVED)
+  createdAt DateTime @default(now())
+}

@@ -1,0 +1,42 @@
+/* in client/src/pages/AdminSettingsPage.css */
+
+.admin-settings-container h2 {
+  margin-bottom: 30px;
+}
+
+.change-password-form {
+  max-width: 500px;
+  background: #0a2c33;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.change-password-form h3 {
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #333;
+}
+
+.change-password-form .form-group {
+  margin-bottom: 15px;
+}
+
+.change-password-form label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.change-password-form input {
+  width: 100%;
+  padding: 12px;
+  background-color: #05161a;
+  border: 1px solid #555;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+}
+
+.change-password-form .submit-button {
+  width: 100%;
+  margin-top: 10px;
+}

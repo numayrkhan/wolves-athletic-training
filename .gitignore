@@ -1,0 +1,34 @@
+# Dependencies
+/node_modules
+/client/node_modules
+/server/node_modules
+dist/
+build/
+coverage/
+*.log
+
+# Environment variables
+.env
+.env.*
+client/.env
+client/.env.*
+server/.env
+server/.env.*
+client/.env.production
+server/.env.production
+# VS Code specific
+.history/
+
+# Build output
+/dist
+/build
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-generated files
+.DS_Store
+Thumbs.db
