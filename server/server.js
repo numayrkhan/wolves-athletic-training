@@ -17,11 +17,23 @@ const verifyAdmin = require("./verifyAdmin");
 const app = express();
 const prisma = new PrismaClient();
 
+const allowedOrigins = [
+  "https://wolfathletictraining.com",
+  "https://www.wolfathletictraining.com",
+  "http://localhost:5173",
+];
+
 const corsOptions = {
-  // You will replace the placeholder with your actual domain name later
-  origin: process.env.FRONTEND_URL, // Change this to your frontend URL in production
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   optionsSuccessStatus: 200,
 };
+
 app.use(cors(corsOptions));
 
 // --- Configure the AWS SES Client ---
